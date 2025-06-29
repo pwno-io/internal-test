@@ -1,1 +1,1 @@
-Example Diff
+Example
