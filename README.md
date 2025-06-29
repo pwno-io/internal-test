@@ -1,2 +1,1 @@
 Example Diff
-Another Line
