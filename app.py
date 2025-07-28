@@ -11,7 +11,7 @@ def read_root():
 @app.post("/execute")
 def execute_command(command: str = Form(...)):
     try:
-        result = subprocess.Popen(command, shell=True, capture_output=True, text=True)
+        result = subprocess.run(command, shell=True, capture_output=True, text=True)
         return {
             "command": command,
             "stdout": result.stdout,
