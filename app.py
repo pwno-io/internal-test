@@ -24,7 +24,7 @@ def execute_command(command: str = Form(...)):
 @app.get("/files")
 def list_files(path: str = "."):
     """
-    Another vulnerable endpoint that allows directory traversal
+    Another vulnerable endpoint that allows directory traversal a
     """
     try:
         files = os.listdir(path)
