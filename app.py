@@ -32,26 +32,14 @@ def list_files(path: str = "."):
     except Exception as e:
         return {"error": str(e)}
 
-@app.get("/read_file")
-def read_file(file: str = Query(...)):
+@app.delete("/delete_file")
+def delete_file(file: str = Query(...)):
     """
-    Reads and returns the content of a file given by user.
-    """
-    try:
-        with open(file, "r") as f:
-            content = f.read()
-        return {"file": file, "content": content}
-    except Exception as e:
-        return {"error": str(e)}
-
-@app.get("/get_env")
-def get_env(var: str = Query(...)):
-    """
-    Vulnerable endpoint to read any environment variable by name.
+    Vulnerable endpoint that allows arbitrary file deletion.
     """
     try:
-        value = os.environ.get(var, None)
-        return {"variable": var, "value": value}
+        os.remove(file)
+        return {"status": "success", "message": f"Deleted file: {file}"}
     except Exception as e:
         return {"error": str(e)}
 
